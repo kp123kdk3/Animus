@@ -1,0 +1,100 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build output
+dist/
+build/
+out/
+.next/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Database
+*.sqlite
+*.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+tmp/
+temp/
+
+# Python (if using Python scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Prisma
+prisma/migrations/
+
+# Misc
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# User-specific files (DO NOT COMMIT)
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Exclude parent directories - only track Animus project files
+../../../../*
+!../../../../Desktop/Python/Animus/
+../../../*
+!../../../Python/Animus/
+../../*
+!../../Animus/
+../*
+!../Animus/

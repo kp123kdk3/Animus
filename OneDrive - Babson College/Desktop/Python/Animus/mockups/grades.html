@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animus - Grades</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="#2563eb"/>
+                    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
+                </svg>
+                <span>Animus</span>
+            </div>
+
+            <nav>
+                <ul class="nav-items">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="calendar.html" class="nav-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="grades.html" class="nav-link active">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="20" x2="18" y2="10"/>
+                                <line x1="12" y1="20" x2="12" y2="4"/>
+                                <line x1="6" y1="20" x2="6" y2="14"/>
+                            </svg>
+                            <span>Grades</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 1v6m0 6v6m8.66-13.66l-4.24 4.24m-8.48 8.48l-4.24 4.24M23 12h-6m-6 0H1m20.66 8.66l-4.24-4.24m-8.48-8.48l-4.24-4.24"/>
+                            </svg>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="user-profile">
+                <button class="btn-secondary" style="width: 100%; justify-content: center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M6.168 18.849A4 4 0 0 1 10 16h4a4 4 0 0 1 3.834 2.855"/>
+                    </svg>
+                    <span>Profile</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Page Header -->
+            <header class="page-header">
+                <div>
+                    <h1 class="page-title">Grades & Performance</h1>
+                    <p style="color: var(--gray-600); margin-top: 4px;">Track your academic progress and calculate grades</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" id="darkModeToggle" title="Toggle dark mode">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                    <button class="btn-secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 6 2 18 2 18 9"/>
+                            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                            <rect x="6" y="14" width="12" height="8"/>
+                        </svg>
+                        Export Report
+                    </button>
+                    <button class="btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="1"/>
+                            <circle cx="19" cy="12" r="1"/>
+                            <circle cx="5" cy="12" r="1"/>
+                        </svg>
+                        Grade Calculator
+                    </button>
+                </div>
+            </header>
+
+            <!-- GPA Overview -->
+            <div class="stats-grid">
+                <div class="stat-card" style="grid-column: span 2;">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <div class="stat-label">Cumulative GPA</div>
+                            <div class="stat-value" style="color: #10b981;">3.85</div>
+                            <div style="font-size: 0.875rem; color: var(--success-green); margin-top: 8px;">
+                                ↑ 0.08 from last semester
+                            </div>
+                        </div>
+                        <div class="stat-icon" style="background-color: #d1fae5; color: #10b981;">
+                            🎯
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #dbeafe; color: #2563eb;">
+                        📈
+                    </div>
+                    <div class="stat-label">Semester GPA</div>
+                    <div class="stat-value">3.92</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: #ede9fe; color: #8b5cf6;">
+                        ⭐
+                    </div>
+                    <div class="stat-label">Current Average</div>
+                    <div class="stat-value">92%</div>
+                </div>
+            </div>
+
+            <!-- Grade Trends Chart -->
+            <div class="card">
+                <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 20px;">Grade Trends Over Time</h2>
+                <div style="background-color: var(--gray-50); padding: 24px; border-radius: 8px; text-align: center;">
+                    <!-- Placeholder for Chart.js or similar -->
+                    <svg width="100%" height="300" viewBox="0 0 800 300" style="background: white; border-radius: 8px;">
+                        <!-- Grid lines -->
+                        <line x1="60" y1="40" x2="60" y2="260" stroke="#e5e7eb" stroke-width="2"/>
+                        <line x1="60" y1="260" x2="760" y2="260" stroke="#e5e7eb" stroke-width="2"/>
+
+                        <!-- Y-axis labels -->
+                        <text x="40" y="45" font-size="12" fill="#6b7280">100</text>
+                        <text x="45" y="100" font-size="12" fill="#6b7280">90</text>
+                        <text x="45" y="155" font-size="12" fill="#6b7280">80</text>
+                        <text x="45" y="210" font-size="12" fill="#6b7280">70</text>
+                        <text x="45" y="265" font-size="12" fill="#6b7280">60</text>
+
+                        <!-- Grid lines horizontal -->
+                        <line x1="60" y1="40" x2="760" y2="40" stroke="#f3f4f6" stroke-width="1"/>
+                        <line x1="60" y1="95" x2="760" y2="95" stroke="#f3f4f6" stroke-width="1"/>
+                        <line x1="60" y1="150" x2="760" y2="150" stroke="#f3f4f6" stroke-width="1"/>
+                        <line x1="60" y1="205" x2="760" y2="205" stroke="#f3f4f6" stroke-width="1"/>
+
+                        <!-- CS 101 Line -->
+                        <polyline points="100,80 200,65 300,70 400,60 500,55 600,50 700,45"
+                                  fill="none" stroke="#2563eb" stroke-width="3"/>
+
+                        <!-- MATH 201 Line -->
+                        <polyline points="100,90 200,85 300,80 400,75 500,70 600,68 700,65"
+                                  fill="none" stroke="#f59e0b" stroke-width="3"/>
+
+                        <!-- ENG 105 Line -->
+                        <polyline points="100,70 200,75 300,72 400,70 500,68 600,65 700,60"
+                                  fill="none" stroke="#8b5cf6" stroke-width="3"/>
+
+                        <!-- PHYS 150 Line -->
+                        <polyline points="100,100 200,95 300,90 400,85 500,80 600,75 700,72"
+                                  fill="none" stroke="#10b981" stroke-width="3"/>
+
+                        <!-- X-axis labels -->
+                        <text x="85" y="280" font-size="11" fill="#6b7280">Week 1</text>
+                        <text x="185" y="280" font-size="11" fill="#6b7280">Week 3</text>
+                        <text x="285" y="280" font-size="11" fill="#6b7280">Week 5</text>
+                        <text x="385" y="280" font-size="11" fill="#6b7280">Week 7</text>
+                        <text x="485" y="280" font-size="11" fill="#6b7280">Week 9</text>
+                        <text x="580" y="280" font-size="11" fill="#6b7280">Week 11</text>
+                        <text x="680" y="280" font-size="11" fill="#6b7280">Week 13</text>
+                    </svg>
+
+                    <!-- Legend -->
+                    <div style="display: flex; justify-content: center; gap: 24px; margin-top: 20px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <div style="width: 16px; height: 3px; background-color: #2563eb;"></div>
+                            <span style="font-size: 0.875rem; color: var(--gray-600);">CS 101 (96%)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <div style="width: 16px; height: 3px; background-color: #f59e0b;"></div>
+                            <span style="font-size: 0.875rem; color: var(--gray-600);">MATH 201 (91%)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <div style="width: 16px; height: 3px; background-color: #8b5cf6;"></div>
+                            <span style="font-size: 0.875rem; color: var(--gray-600);">ENG 105 (94%)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <div style="width: 16px; height: 3px; background-color: #10b981;"></div>
+                            <span style="font-size: 0.875rem; color: var(--gray-600);">PHYS 150 (89%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Cards Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; margin-top: 24px;">
+                <!-- CS 101 Card -->
+                <div class="card">
+                    <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 20px;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <span class="course-tag" style="background-color: #dbeafe; color: #2563eb;">CS 101</span>
+                                <h3 style="font-size: 1.125rem; font-weight: 600;">Intro to Programming</h3>
+                            </div>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">Prof. Anderson</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #2563eb;">96%</div>
+                            <div style="font-size: 0.875rem; color: var(--gray-600);">A</div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="font-size: 0.875rem; color: var(--gray-600);">Course Progress</span>
+                            <span style="font-size: 0.875rem; font-weight: 600;">576/600 pts</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background-color: var(--gray-200); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 96%; height: 100%; background-color: #2563eb;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Grade Breakdown -->
+                    <div style="border-top: 1px solid var(--gray-200); padding-top: 16px;">
+                        <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: 12px; color: var(--gray-600);">GRADE BREAKDOWN</h4>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Homework (30%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #10b981;">95%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Labs (20%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #10b981;">98%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Exams (40%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #10b981;">94%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Project (10%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: var(--gray-400);">Pending</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-secondary" style="width: 100%; margin-top: 16px; justify-content: center;">
+                        View Details & Calculator
+                    </button>
+                </div>
+
+                <!-- MATH 201 Card -->
+                <div class="card">
+                    <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 20px;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <span class="course-tag" style="background-color: #fef3c7; color: #f59e0b;">MATH 201</span>
+                                <h3 style="font-size: 1.125rem; font-weight: 600;">Calculus II</h3>
+                            </div>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">Prof. Martinez</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #f59e0b;">91%</div>
+                            <div style="font-size: 0.875rem; color: var(--gray-600);">A-</div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="font-size: 0.875rem; color: var(--gray-600);">Course Progress</span>
+                            <span style="font-size: 0.875rem; font-weight: 600;">728/800 pts</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background-color: var(--gray-200); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 91%; height: 100%; background-color: #f59e0b;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Grade Breakdown -->
+                    <div style="border-top: 1px solid var(--gray-200); padding-top: 16px;">
+                        <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: 12px; color: var(--gray-600);">GRADE BREAKDOWN</h4>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Homework (25%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #10b981;">88%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Quizzes (15%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #10b981;">93%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Midterms (30%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #10b981;">90%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Final Exam (30%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: var(--gray-400);">Dec 15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-secondary" style="width: 100%; margin-top: 16px; justify-content: center;">
+                        View Details & Calculator
+                    </button>
+                </div>
+
+                <!-- ENG 105 Card -->
+                <div class="card">
+                    <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 20px;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <span class="course-tag" style="background-color: #ede9fe; color: #8b5cf6;">ENG 105</span>
+                                <h3 style="font-size: 1.125rem; font-weight: 600;">Writing & Rhetoric</h3>
+                            </div>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">Prof. Thompson</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #8b5cf6;">94%</div>
+                            <div style="font-size: 0.875rem; color: var(--gray-600);">A</div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="font-size: 0.875rem; color: var(--gray-600);">Course Progress</span>
+                            <span style="font-size: 0.875rem; font-weight: 600;">470/500 pts</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background-color: var(--gray-200); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 94%; height: 100%; background-color: #8b5cf6;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Grade Breakdown -->
+                    <div style="border-top: 1px solid var(--gray-200); padding-top: 16px;">
+                        <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: 12px; color: var(--gray-600);">GRADE BREAKDOWN</h4>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Essays (50%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #10b981;">92%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Discussions (20%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #10b981;">98%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Peer Reviews (15%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #10b981;">95%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Portfolio (15%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: var(--gray-400);">Nov 30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-secondary" style="width: 100%; margin-top: 16px; justify-content: center;">
+                        View Details & Calculator
+                    </button>
+                </div>
+
+                <!-- PHYS 150 Card -->
+                <div class="card">
+                    <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 20px;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <span class="course-tag" style="background-color: #d1fae5; color: #10b981;">PHYS 150</span>
+                                <h3 style="font-size: 1.125rem; font-weight: 600;">General Physics</h3>
+                            </div>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">Prof. Chen</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #10b981;">89%</div>
+                            <div style="font-size: 0.875rem; color: var(--gray-600);">B+</div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="font-size: 0.875rem; color: var(--gray-600);">Course Progress</span>
+                            <span style="font-size: 0.875rem; font-weight: 600;">623/700 pts</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background-color: var(--gray-200); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 89%; height: 100%; background-color: #10b981;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Grade Breakdown -->
+                    <div style="border-top: 1px solid var(--gray-200); padding-top: 16px;">
+                        <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: 12px; color: var(--gray-600);">GRADE BREAKDOWN</h4>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Lab Reports (30%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #10b981;">91%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Problem Sets (20%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #f59e0b;">85%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Midterm (25%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: #f59e0b;">87%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-size: 0.875rem;">Final Exam (25%)</span>
+                                </div>
+                                <span style="font-family: var(--font-mono); font-weight: 600; color: var(--gray-400);">Dec 18</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-secondary" style="width: 100%; margin-top: 16px; justify-content: center;">
+                        View Details & Calculator
+                    </button>
+                </div>
+            </div>
+
+            <!-- What-If Grade Calculator -->
+            <div class="card" style="margin-top: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; color: white;">What-If Grade Calculator</h2>
+                        <p style="font-size: 0.875rem; opacity: 0.9;">Predict your final grade and see what you need to achieve your goals</p>
+                    </div>
+                    <button class="btn-primary" style="background-color: white; color: #667eea;">
+                        Open Calculator
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
