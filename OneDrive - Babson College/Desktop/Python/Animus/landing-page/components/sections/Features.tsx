@@ -1,132 +1,103 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Badge } from '@/components/ui/Badge';
-import { Card } from '@/components/ui/Card';
-import { Target, Zap, Calculator, Calendar as CalendarIcon, Brain } from 'lucide-react';
-import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '@/lib/utils';
+import { Target, Zap, TrendingUp, Calendar, Brain } from 'lucide-react';
+
+const features = [
+  {
+    icon: Target,
+    badge: '🎯 Smart Organization',
+    title: 'Everything. One Place. Zero Clicks.',
+    description: 'See every assignment across all your classes instantly. No more tab-hopping through Canvas pages. Your entire academic life, organized automatically.',
+    gradient: 'from-blue-500 to-cyan-500',
+  },
+  {
+    icon: Brain,
+    badge: '🤖 Intelligent Priority',
+    title: 'Let AI Decide What Matters Most',
+    description: 'Animus automatically prioritizes your workload based on due dates, difficulty, and your personal patterns. Focus on what matters, ignore the noise.',
+    gradient: 'from-purple-500 to-pink-500',
+  },
+  {
+    icon: Zap,
+    badge: '⚡ Instant Updates',
+    title: 'Canvas Integration That Actually Works',
+    description: "Automatic syncing every 15 minutes. New assignment posted? You'll know before your professor announces it. Never miss an update again.",
+    gradient: 'from-green-500 to-emerald-500',
+  },
+  {
+    icon: TrendingUp,
+    badge: '📈 Predictive Analytics',
+    title: 'Know Your Grade Before It Drops',
+    description: 'Beautiful graphs track your performance over time. Grade calculator shows exactly what you need to hit your target. Stay ahead, not behind.',
+    gradient: 'from-orange-500 to-red-500',
+  },
+  {
+    icon: Calendar,
+    badge: '📅 Time Mastery',
+    title: 'Your Academic Life, Visualized',
+    description: 'Tests, assignments, deadlines—all color-coded on one gorgeous calendar. Export to Google Calendar with one click. Total control.',
+    gradient: 'from-indigo-500 to-purple-500',
+  },
+];
 
 export function Features() {
-  const features = [
-    {
-      icon: Target,
-      emoji: '🎯',
-      badge: 'Smart Organization',
-      title: 'Everything. One Place. Zero Clicks.',
-      description: 'See every assignment across all your classes instantly. No more hunting through Canvas menus or missing deadlines.',
-      gradient: 'from-indigo-500 to-purple-500',
-      direction: 'left',
-    },
-    {
-      icon: Zap,
-      emoji: '⚡',
-      badge: 'AI-Powered',
-      title: 'Your Assignments. Prioritized.',
-      description: 'Smart algorithms rank your work by urgency, difficulty, and weight. Focus on what matters most, automatically.',
-      gradient: 'from-purple-500 to-pink-500',
-      direction: 'right',
-    },
-    {
-      icon: Calculator,
-      emoji: '📊',
-      badge: 'Grade Calculator',
-      title: 'Know Your GPA. Always.',
-      description: 'Real-time grade tracking with "what-if" scenarios. Calculate exactly what you need to hit your target grade.',
-      gradient: 'from-pink-500 to-red-500',
-      direction: 'left',
-    },
-    {
-      icon: CalendarIcon,
-      emoji: '📅',
-      badge: 'Smart Calendar',
-      title: 'Never Miss a Deadline Again.',
-      description: 'Auto-sync with Google Calendar. Get smart reminders based on assignment complexity and your schedule.',
-      gradient: 'from-cyan-500 to-blue-500',
-      direction: 'right',
-    },
-    {
-      icon: Brain,
-      emoji: '🧠',
-      badge: 'Study Insights',
-      title: 'Learn Smarter, Not Harder.',
-      description: 'AI analyzes your performance patterns and suggests optimal study times. Get personalized recommendations for success.',
-      gradient: 'from-green-500 to-teal-500',
-      direction: 'left',
-    },
-  ];
-
   return (
-    <section id="features" className="py-24 bg-gradient-to-b from-black to-gray-900">
-      <div className="container mx-auto px-6">
-        {/* Section Header */}
+    <section id="features" className="py-20 px-6 bg-white">
+      <div className="container mx-auto max-w-6xl">
+        {/* Section Title */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-6xl font-bold text-white mb-6"
-          >
-            Features That <span className="gradient-text">Transform</span>
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
-          >
-            Everything you need to dominate your academics. All in one beautiful dashboard.
-          </motion.p>
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
+            Your Academic <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Superpowers</span>
+          </h2>
         </motion.div>
 
-        {/* Feature Cards */}
+        {/* Features List */}
         <div className="space-y-32">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={feature.direction === 'left' ? slideInLeft : slideInRight}
-              className={`flex flex-col ${
-                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-              } gap-12 items-center`}
-            >
-              {/* Content */}
-              <div className="flex-1 space-y-6">
-                <Badge variant="gradient" className="text-sm">
-                  {feature.emoji} {feature.badge}
-                </Badge>
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            const isEven = index % 2 === 0;
 
-                <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                  {feature.title}
-                </h3>
-
-                <p className="text-xl text-gray-400 leading-relaxed">
-                  {feature.description}
-                </p>
-
-                <div className="pt-4">
-                  <div className={`inline-block p-4 rounded-2xl bg-gradient-to-r ${feature.gradient} bg-opacity-10`}>
-                    <feature.icon className="w-12 h-12 text-white" />
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true, margin: '-100px' }}
+                className={`flex flex-col ${
+                  isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+                } items-center gap-12`}
+              >
+                {/* Visual Side */}
+                <div className="flex-1">
+                  <div className={`relative bg-gradient-to-br ${feature.gradient} rounded-3xl p-12 shadow-2xl`}>
+                    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-3xl" />
+                    <Icon className="relative w-32 h-32 mx-auto text-white" strokeWidth={1.5} />
                   </div>
                 </div>
-              </div>
 
-              {/* Visual Mockup */}
-              <div className="flex-1 w-full">
-                <Card
-                  hover
-                  className="bg-gray-800/50 border-gray-700 backdrop-blur-sm p-8 h-80"
-                >
-                  <div className={`w-full h-full rounded-lg bg-gradient-to-br ${feature.gradient} opacity-20 flex items-center justify-center`}>
-                    <feature.icon className="w-24 h-24 text-white/30" />
+                {/* Text Side */}
+                <div className="flex-1">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-700 mb-4">
+                    {feature.badge}
                   </div>
-                </Card>
-              </div>
-            </motion.div>
-          ))}
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    {feature.title}
+                  </h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

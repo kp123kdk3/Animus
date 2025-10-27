@@ -3,8 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
-import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,12 +31,11 @@ export function Navbar() {
 
   return (
     <nav
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-black/80 backdrop-blur-md border-b border-white/10'
+          ? 'bg-white/80 backdrop-blur-md shadow-md border-b border-gray-200/50'
           : 'bg-transparent'
-      )}
+      }`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -49,38 +46,57 @@ export function Navbar() {
               e.preventDefault();
               scrollToSection('#hero');
             }}
-            className="text-2xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent"
+            className="text-2xl font-bold"
           >
-            Animus
+            <span className={`bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent`}>
+              Animus
+            </span>
           </a>
 
-          {/* Desktop Nav */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.href)}
-                className="text-gray-300 hover:text-white transition-colors"
+                className={`font-medium transition-colors ${
+                  isScrolled
+                    ? 'text-gray-700 hover:text-indigo-600'
+                    : 'text-white hover:text-indigo-300'
+                }`}
               >
                 {link.name}
               </button>
             ))}
-          </div>
 
-          {/* CTAs */}
-          <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" className="text-white hover:bg-white/10">
-              Login
-            </Button>
-            <Button variant="primary">Get Started</Button>
+            {/* Investor Button */}
+            <a
+              href="/investors"
+              className={`px-6 py-2 font-semibold rounded-full border-2 transition-all ${
+                isScrolled
+                  ? 'border-indigo-600 text-indigo-600 hover:bg-indigo-50'
+                  : 'border-white text-white hover:bg-white/10'
+              }`}
+            >
+              For Investors →
+            </a>
+
+            {/* Primary CTA */}
+            <button className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all">
+              Get Started
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2"
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            {isMobileMenuOpen ? (
+              <X className={isScrolled ? 'text-gray-900' : 'text-white'} />
+            ) : (
+              <Menu className={isScrolled ? 'text-gray-900' : 'text-white'} />
+            )}
           </button>
         </div>
       </div>
@@ -92,30 +108,27 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/10"
+            className="md:hidden bg-white border-t border-gray-200"
           >
-            <div className="container mx-auto px-6 py-6 space-y-4">
+            <div className="container mx-auto px-6 py-4 space-y-4">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="block w-full text-left py-3 text-lg text-gray-300 hover:text-white"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-indigo-600 font-medium"
                 >
                   {link.name}
                 </button>
               ))}
-              <div className="pt-4 space-y-3">
-                <Button
-                  variant="outline"
-                  className="w-full border-white/20 text-white hover:bg-white/10"
-                >
-                  Login
-                </Button>
-                <Button variant="primary" className="w-full">
-                  Get Started
-                </Button>
-              </div>
+              <a
+                href="/investors"
+                className="block py-2 text-indigo-600 font-semibold"
+              >
+                For Investors →
+              </a>
+              <button className="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-full">
+                Get Started
+              </button>
             </div>
           </motion.div>
         )}

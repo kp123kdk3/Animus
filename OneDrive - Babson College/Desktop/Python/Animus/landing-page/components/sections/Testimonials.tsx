@@ -1,161 +1,131 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/Card';
 import { Star } from 'lucide-react';
-import { fadeInUp, staggerContainer } from '@/lib/utils';
+
+const testimonials = [
+  {
+    quote: "Animus saved my GPA. I went from constantly missing deadlines to staying ahead of every assignment. It's like having a personal assistant who actually gets student life.",
+    author: 'Sarah Martinez',
+    role: 'Computer Science',
+    school: 'Stanford University',
+    rating: 5,
+    avatar: '👩‍💻',
+  },
+  {
+    quote: "I used to spend 30 minutes every morning just figuring out what was due. Now I open Animus once and I'm done. It's beautiful and it actually works.",
+    author: 'Marcus Johnson',
+    role: 'Business Administration',
+    school: 'UC Berkeley',
+    rating: 5,
+    avatar: '👨‍💼',
+  },
+  {
+    quote: "The grade calculator changed everything. I always know exactly where I stand and what I need to hit my goals. Absolute game changer for pre-med.",
+    author: 'Priya Kapoor',
+    role: 'Pre-Med',
+    school: 'MIT',
+    rating: 5,
+    avatar: '👩‍⚕️',
+  },
+  {
+    quote: "Canvas stresses me out. Animus makes me feel in control. I actually enjoy planning my week now. Who knew productivity could feel this good?",
+    author: 'Alex Thompson',
+    role: 'Engineering',
+    school: 'Georgia Tech',
+    rating: 5,
+    avatar: '👨‍🔧',
+  },
+  {
+    quote: "Finally, a tool that understands students. The AI prioritization is scary accurate. It knows what I need to focus on before I do.",
+    author: 'Emma Chen',
+    role: 'Psychology',
+    school: 'UCLA',
+    rating: 5,
+    avatar: '👩‍🎓',
+  },
+  {
+    quote: "My entire friend group switched to Animus after seeing my dashboard. Now we can't imagine going back to regular Canvas. It's that good.",
+    author: 'James Rodriguez',
+    role: 'Economics',
+    school: 'University of Michigan',
+    rating: 5,
+    avatar: '👨‍🎓',
+  },
+];
 
 export function Testimonials() {
-  const testimonials = [
-    {
-      quote: "Animus saved my GPA. I went from constantly missing deadlines to staying ahead of every assignment. The AI prioritization is a game-changer.",
-      name: "Sarah Martinez",
-      school: "Stanford University",
-      major: "Computer Science",
-      avatar: "SM",
-      gradient: "from-indigo-500 to-purple-500",
-    },
-    {
-      quote: "I can't believe I used to waste hours clicking through Canvas. Animus gives me everything I need in one glance. Best $5/month I've ever spent.",
-      name: "James Chen",
-      school: "MIT",
-      major: "Mechanical Engineering",
-      avatar: "JC",
-      gradient: "from-purple-500 to-pink-500",
-    },
-    {
-      quote: "The grade calculator feature alone is worth it. I always know exactly where I stand and what I need to hit my target grades. Stress = gone.",
-      name: "Emily Rodriguez",
-      school: "UC Berkeley",
-      major: "Business Administration",
-      avatar: "ER",
-      gradient: "from-pink-500 to-cyan-500",
-    },
-    {
-      quote: "As someone juggling 6 classes and a part-time job, Animus is literally the only reason I'm surviving this semester. The smart reminders are perfect.",
-      name: "Marcus Thompson",
-      school: "Georgia Tech",
-      major: "Data Science",
-      avatar: "MT",
-      gradient: "from-cyan-500 to-blue-500",
-    },
-    {
-      quote: "My grades improved by a full letter when I started using Animus. The insights feature helps me study smarter, not harder.",
-      name: "Priya Patel",
-      school: "NYU",
-      major: "Psychology",
-      avatar: "PP",
-      gradient: "from-green-500 to-teal-500",
-    },
-    {
-      quote: "I recommended Animus to my entire dorm floor. Everyone who uses it says the same thing: 'Why didn't this exist sooner?'",
-      name: "Alex Kim",
-      school: "Harvard University",
-      major: "Economics",
-      avatar: "AK",
-      gradient: "from-orange-500 to-red-500",
-    },
-  ];
-
   return (
-    <section id="testimonials" className="py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
+    <section id="testimonials" className="py-20 px-6 bg-gradient-to-b from-white to-indigo-50">
+      <div className="container mx-auto max-w-6xl">
+        {/* Section Title */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-6xl font-bold text-white mb-6"
-          >
-            Loved by <span className="gradient-text">Students</span> Everywhere
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
-          >
-            Join thousands of students who transformed their academic life with Animus.
-          </motion.p>
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
+            What Students Are <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Saying</span>
+          </h2>
+          <p className="text-xl text-gray-600">
+            10,000+ students transformed. Here are their stories.
+          </p>
         </motion.div>
 
         {/* Testimonials Grid */}
         <motion.div
-          variants={staggerContainer}
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: { staggerChildren: 0.1 },
+            },
+          }}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          whileInView="show"
+          viewport={{ once: true, margin: '-100px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {testimonials.map((testimonial, index) => (
-            <motion.div key={index} variants={fadeInUp}>
-              <Card
-                hover
-                className="bg-gray-800/50 border-gray-700 backdrop-blur-sm p-8 h-full flex flex-col"
-              >
-                {/* Stars */}
-                <div className="flex gap-1 mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
+            <motion.div
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                show: { opacity: 1, y: 0 },
+              }}
+              className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              {/* Rating */}
+              <div className="flex gap-1 mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
 
-                {/* Quote */}
-                <p className="text-gray-300 leading-relaxed mb-6 flex-grow">
-                  "{testimonial.quote}"
-                </p>
+              {/* Quote */}
+              <p className="text-gray-700 leading-relaxed mb-6">
+                "{testimonial.quote}"
+              </p>
 
-                {/* Author */}
-                <div className="flex items-center gap-4">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${testimonial.gradient} flex items-center justify-center text-white font-bold text-lg`}>
-                    {testimonial.avatar}
+              {/* Author */}
+              <div className="flex items-center gap-4">
+                <div className="text-4xl">{testimonial.avatar}</div>
+                <div>
+                  <div className="font-semibold text-gray-900">
+                    {testimonial.author}
                   </div>
-                  <div>
-                    <p className="text-white font-semibold">{testimonial.name}</p>
-                    <p className="text-gray-400 text-sm">{testimonial.school}</p>
-                    <p className="text-gray-500 text-xs">{testimonial.major}</p>
+                  <div className="text-sm text-gray-600">
+                    {testimonial.role}
+                  </div>
+                  <div className="text-sm text-indigo-600 font-medium">
+                    {testimonial.school}
                   </div>
                 </div>
-              </Card>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Bottom Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-16 text-center"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <p className="text-3xl font-bold gradient-text mb-2">4.9/5</p>
-              <p className="text-gray-400">Average Rating</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold gradient-text mb-2">10,000+</p>
-              <p className="text-gray-400">Active Students</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold gradient-text mb-2">500+</p>
-              <p className="text-gray-400">Universities</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold gradient-text mb-2">50M+</p>
-              <p className="text-gray-400">Assignments Tracked</p>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

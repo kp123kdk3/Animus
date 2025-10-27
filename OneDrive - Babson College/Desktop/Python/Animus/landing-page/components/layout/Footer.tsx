@@ -1,100 +1,54 @@
-'use client';
-
 import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
 
 export function Footer() {
-  const footerLinks = {
+  const footerSections = {
     product: {
       title: 'Product',
-      links: [
-        { name: 'Features', href: '#features' },
-        { name: 'Pricing', href: '#pricing' },
-        { name: 'Integrations', href: '#' },
-        { name: 'Roadmap', href: '#' },
-        { name: 'Changelog', href: '#' },
-      ],
+      links: ['Features', 'Pricing', 'Integrations', 'Roadmap', 'Changelog'],
     },
     company: {
       title: 'Company',
-      links: [
-        { name: 'About', href: '#' },
-        { name: 'Blog', href: '#' },
-        { name: 'Careers', href: '#' },
-        { name: 'Contact', href: '#' },
-        { name: 'Press Kit', href: '#' },
-      ],
+      links: ['About', 'Blog', 'Careers', 'Press Kit', 'Contact'],
     },
     resources: {
       title: 'Resources',
-      links: [
-        { name: 'Help Center', href: '#' },
-        { name: 'API Docs', href: '#' },
-        { name: 'Canvas Guide', href: '#' },
-        { name: 'Video Tutorials', href: '#' },
-        { name: 'Community', href: '#' },
-      ],
+      links: ['Help Center', 'API Docs', 'Canvas Guide', 'Community', 'Status'],
     },
     legal: {
       title: 'Legal',
-      links: [
-        { name: 'Privacy Policy', href: '#' },
-        { name: 'Terms of Service', href: '#' },
-        { name: 'Security', href: '#' },
-        { name: 'GDPR', href: '#' },
-        { name: 'Cookie Policy', href: '#' },
-      ],
+      links: ['Privacy', 'Terms', 'Security', 'GDPR', 'Cookies'],
     },
   };
 
-  const socialLinks = [
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: '#', label: 'Email' },
-  ];
-
   return (
-    <footer className="bg-black text-white border-t border-gray-800">
-      <div className="container mx-auto px-6 py-16">
-        {/* Main Footer Content */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 mb-12">
-          {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <a
-              href="#"
-              className="text-3xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent mb-4 inline-block"
-            >
-              Animus
-            </a>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              The AI-powered command center that transforms your chaotic Canvas experience into organized success.
-            </p>
-            <div className="flex gap-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
+    <footer className="bg-gray-900 text-gray-300 py-12 px-6">
+      <div className="container mx-auto max-w-6xl">
+        {/* Top Section */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+          {/* Logo & Tagline */}
+          <div className="col-span-2 md:col-span-1">
+            <div className="text-2xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                Animus
+              </span>
             </div>
+            <p className="text-sm text-gray-400">
+              Your command center for academic success
+            </p>
           </div>
 
           {/* Links Columns */}
-          {Object.values(footerLinks).map((section, index) => (
-            <div key={index}>
-              <h3 className="font-semibold mb-4 text-white">{section.title}</h3>
-              <ul className="space-y-3">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
+          {Object.entries(footerSections).map(([key, section]) => (
+            <div key={key}>
+              <h3 className="font-semibold text-white mb-4">{section.title}</h3>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link}>
                     <a
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors"
+                      href="#"
+                      className="text-sm hover:text-indigo-400 transition-colors"
                     >
-                      {link.name}
+                      {link}
                     </a>
                   </li>
                 ))}
@@ -103,21 +57,42 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Animus. All rights reserved. Made with ❤️ by students, for students.
-          </p>
-          <div className="flex gap-6 text-sm">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              Status
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              Sitemap
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              Accessibility
-            </a>
+        {/* Divider */}
+        <div className="border-t border-gray-800 pt-8">
+          {/* Bottom Section */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            {/* Copyright */}
+            <p className="text-sm text-gray-400">
+              © 2024 Animus. All rights reserved.
+            </p>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-4">
+              <a
+                href="#"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-indigo-600 transition-colors"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-indigo-600 transition-colors"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-indigo-600 transition-colors"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-indigo-600 transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

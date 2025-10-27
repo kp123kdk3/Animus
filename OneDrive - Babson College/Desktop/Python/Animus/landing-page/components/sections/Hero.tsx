@@ -26,114 +26,109 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-gray-900 via-black to-black flex items-center justify-center">
-      {/* 3D Background */}
-      <div className="absolute inset-0 opacity-40">
+    <section id="hero" className="relative h-screen w-full overflow-hidden bg-gradient-to-b from-gray-900 via-black to-black">
+      {/* 3D Background Layer (z-0) */}
+      <div className="absolute inset-0 z-0 opacity-40">
         <Hero3D />
       </div>
 
       {/* Gradient Overlay */}
       <div className="absolute inset-0 mesh-gradient opacity-50" />
 
-      {/* Content */}
+      {/* Text Overlay Layer (z-10) */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+        <motion.div
+          className="text-center max-w-5xl mx-auto px-6 pointer-events-auto"
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Eyebrow */}
+          <motion.p
+            variants={fadeIn}
+            transition={{ duration: 0.6 }}
+            className="text-sm md:text-base font-medium text-white/80 mb-6 tracking-wide uppercase"
+          >
+            The Future of Student Productivity
+          </motion.p>
+
+          {/* Main Headline */}
+          <motion.h1
+            variants={fadeIn}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-5xl md:text-6xl lg:text-8xl font-bold mb-6 leading-tight tracking-tight"
+          >
+            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              Stop Wrestling With Canvas.
+            </span>
+            <br />
+            <span className="text-white">
+              Start Winning at School.
+            </span>
+          </motion.h1>
+
+          {/* Subheadline */}
+          <motion.p
+            variants={fadeIn}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg md:text-xl lg:text-2xl text-white/90 mb-10 leading-relaxed max-w-3xl mx-auto"
+          >
+            The AI-powered command center that transforms your chaotic Canvas
+            experience into organized success.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={fadeIn}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+          >
+            <button className="group px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-lg font-semibold rounded-full shadow-lg shadow-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/60 hover:scale-105 transition-all duration-200 flex items-center gap-2">
+              Get Early Access
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button className="px-8 py-4 bg-white/10 backdrop-blur-md text-white text-lg font-semibold rounded-full border-2 border-white/20 hover:bg-white/20 transition-all duration-200 flex items-center gap-2">
+              <Play className="w-5 h-5" />
+              For Investors
+            </button>
+          </motion.div>
+
+          {/* Statistics Bar */}
+          <motion.div
+            variants={fadeIn}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-wrap items-center justify-center gap-6 md:gap-8 text-sm md:text-base text-white/70"
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">🎯</span>
+              <span className="font-medium">10,000+ students</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">⭐</span>
+              <span className="font-medium">4.9/5 rating</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">📊</span>
+              <span className="font-medium">50M+ assignments tracked</span>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Scroll Indicator */}
       <motion.div
-        className="relative z-10 container mx-auto px-6 text-center"
-        variants={stagger}
-        initial="hidden"
-        animate="visible"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce"
       >
-        {/* Logo/Brand */}
-        <motion.div
-          variants={fadeIn}
-          transition={{ duration: 0.6 }}
-          className="mb-8"
-        >
-          <h1 className="text-8xl md:text-9xl font-bold gradient-text mb-4">
-            ANIMUS
-          </h1>
-        </motion.div>
-
-        {/* Main Headline */}
-        <motion.h2
-          variants={fadeIn}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
-        >
-          Stop Wrestling With Canvas.
-          <br />
-          <span className="gradient-text">Start Winning at School.</span>
-        </motion.h2>
-
-        {/* Subheadline */}
-        <motion.p
-          variants={fadeIn}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-        >
-          The AI-powered command center that transforms your chaotic Canvas experience into organized success.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          variants={fadeIn}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-        >
-          <Button
-            variant="primary"
-            size="lg"
-            className="group"
-          >
-            Get Early Access
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-white/20 text-white hover:bg-white/10"
-          >
-            <Play className="mr-2 w-5 h-5" />
-            Watch Demo
-          </Button>
-        </motion.div>
-
-        {/* Statistics */}
-        <motion.div
-          variants={fadeIn}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-8 justify-center items-center text-white/80"
-        >
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold gradient-text">10,000+</span>
-            <span className="text-sm">Students</span>
-          </div>
-          <div className="hidden sm:block w-px h-8 bg-white/20" />
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold gradient-text">4.9★</span>
-            <span className="text-sm">Rating</span>
-          </div>
-          <div className="hidden sm:block w-px h-8 bg-white/20" />
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold gradient-text">50M+</span>
-            <span className="text-sm">Assignments Tracked</span>
-          </div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-2">
-            <motion.div
-              className="w-1 h-2 bg-white rounded-full"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </div>
-        </motion.div>
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
+          <motion.div
+            className="w-1.5 h-3 bg-white/50 rounded-full"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
       </motion.div>
     </section>
   );
