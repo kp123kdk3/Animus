@@ -9,11 +9,32 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let rafId: number | null = null;
+    let lastScrollY = 0;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (rafId !== null) return;
+
+      rafId = requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const shouldBeScrolled = currentScrollY > 50;
+
+        if ((lastScrollY <= 50 && currentScrollY > 50) ||
+            (lastScrollY > 50 && currentScrollY <= 50)) {
+          setIsScrolled(shouldBeScrolled);
+        }
+
+        lastScrollY = currentScrollY;
+        rafId = null;
+      });
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const navLinks = [

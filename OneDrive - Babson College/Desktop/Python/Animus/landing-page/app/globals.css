@@ -2,7 +2,6 @@
 @import "tailwindcss";
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
 
@@ -95,7 +94,6 @@ html {
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
